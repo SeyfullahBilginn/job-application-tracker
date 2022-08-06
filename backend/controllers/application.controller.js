@@ -41,3 +41,21 @@ exports.findAll = (req, res) => {
         else res.send(data);
     });
 };
+
+// Delete a job application with the specified jobId in the request
+exports.delete = (req, res) => {
+    console.log(req.params);
+    Application.remove(req.params.jobId, (err, data) => {
+        if (err) {
+            if (err.kind === "not_found") {
+                res.status(404).send({
+                    message: `Not found Job with id ${req.params.jobId}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: "Could not delete Job Application with id " + req.params.jobId
+                });
+            }
+        } else res.send({ message: `Job application was deleted successfully!` });
+    });
+};

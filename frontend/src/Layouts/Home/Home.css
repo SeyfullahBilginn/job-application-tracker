@@ -1,0 +1,67 @@
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  /* #customers tr:nth-child(even){background-color: #f2f2f2;} */
+  
+  #customers tr:hover {background-color: rgb(253, 249, 249);}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  #deleteIcon {
+    background-color: #edfcf6;
+    /* border: 1px solid rgb(134, 141, 134); */
+    border-radius: 50%;
+    padding: 3px;
+    width: 24px;
+    height: 24px;
+    color: red;
+    cursor: pointer;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+  
+  #deleteIcon:hover {background-color: #d3dfda;}
+
+  #editIcon {
+    background-color: #edfcf6;
+    /* border: 1px solid rgb(134, 141, 134); */
+    border-radius: 50%;
+    padding: 4px;
+    width: 26px;
+    height: 26px;
+    /* width: auto; */
+    /* height: auto; */
+    color: blue;
+    cursor: pointer;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+  
+  #editIcon:hover {background-color: #d3dfda;}
+
+  #actions {
+    display: flex;
+    justify-content: space-evenly;
+  }
+.tableArea {
+    /* background-color: red; */
+    padding: 12px;
+}
+
+.deletePopup {
+  background: red;
+}

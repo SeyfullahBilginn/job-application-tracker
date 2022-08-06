@@ -40,4 +40,24 @@ Application.getAll = (user_id, result) => {
 };
 
 
+Application.remove = (id, result) => {
+    console.log(id);
+    sql.query("DELETE FROM applications WHERE id = ?", id, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+        }
+
+        if (res.affectedRows == 0) {
+            // not found job application with the id
+            result({ kind: "not_found" }, null);
+            return;
+        }
+
+        console.log("deleted job application with id: ", id);
+        result(null, res);
+    });
+};
+
 module.exports = Application;
