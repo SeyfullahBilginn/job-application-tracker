@@ -1,17 +1,23 @@
 /* eslint-disable class-methods-use-this */
-const API_BASE_URL = "http://localhost:3001/";
+const API_BASE_URL = "http://localhost:3001";
 
 class ApplicationService {
   postApp(newApp) {
-    return fetch("http://localhost:3001/users/jobs", {
+    return fetch(`${API_BASE_URL}/users/jobs`, {
       method: "POST",
       body: new URLSearchParams(newApp),
     });
   }
 
   getApps(userId) {
-    return fetch(`http://localhost:3001/users/jobs/${userId}`, {
+    return fetch(`${API_BASE_URL}/users/jobs/${userId}`, {
       method: "GET",
+    });
+  }
+
+  deleteApp(jobId) {
+    return fetch(`${API_BASE_URL}/users/jobs/${jobId}`, {
+      method: "DELETE",
     });
   }
 }

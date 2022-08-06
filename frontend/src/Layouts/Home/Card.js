@@ -26,29 +26,47 @@ const Img = styled("img")({
   maxHeight: "100%",
 });
 
-export default function Card({ companyName, position, location }) {
+export default function Card({ companyName, position, location, expectedSalary }) {
   return (
     <Item style={{ marginTop: 18, backgroundColor: "RGB(250,246,250)" }}>
       <Grid container spacing={2}>
         <Grid item xs={12} sm container>
           <Grid item xs container direction="column" spacing={2}>
-            <Grid
-              item
-              xs
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyItems: "flex-start",
-                justifySelf: "flex-start",
-                justifyContent: "flex-start",
-              }}
-            >
-              <Typography gutterBottom variant="subtitle1">
-                {companyName} / {position}
-              </Typography>
-              <Typography variant="body2" gutterBottom>
-                {location}
-              </Typography>
+            <Grid item xs>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  padding: 12,
+                  alignItems: "flex-start",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    width: "100%",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    // backgroundColor: "blue",
+                  }}
+                >
+                  <Typography variant="subtitle1" fontSize={28} fontWeight={700}>
+                    {companyName}
+                  </Typography>
+                  <Typography variant="subtitle1" fontSize={16} fontWeight={500}>
+                    06.08.2022
+                  </Typography>
+                </div>
+                <Typography style={{ display: "inherit" }} variant="subtitle2" fontSize={18}>
+                  Position: {position}
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                  {location}
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                  {expectedSalary}
+                </Typography>
+              </div>
             </Grid>
           </Grid>
         </Grid>
