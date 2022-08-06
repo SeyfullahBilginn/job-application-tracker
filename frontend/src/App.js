@@ -10,9 +10,7 @@ export default function App() {
   const { userCookie } = useAuth();
   const [allRoutes, setAllRoutes] = useState([]);
 
-  useEffect(() => {
-    console.log(userCookie.user);
-  }, [userCookie.user]);
+  useEffect(() => {}, [userCookie.user]);
   const getRoutes = () =>
     routes.map((route) => {
       if (route.route) {
@@ -27,7 +25,6 @@ export default function App() {
           );
         }
         if (!userCookie.user && !route.isLoggedIn) {
-          console.log(route.route);
           return (
             <Route
               exact={route.exactF}

@@ -16,7 +16,7 @@ connection.connect(error => {
 });
 
 module.exports = connection;
-// var sql = "CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY ,firstName VARCHAR(255), lastName VARCHAR(255), email VARCHAR(255) UNIQUE, userType INT, password VARCHAR(255))";
+// var sql = "CREATE TABLE applications (id INT AUTO_INCREMENT PRIMARY KEY ,firstName VARCHAR(255), lastName VARCHAR(255), email VARCHAR(255) UNIQUE, userType INT, password VARCHAR(255))";
 // connection.query(sql, function (err, result) {
 //     if (err) throw err;
 //     console.log("Table created");
