@@ -26,7 +26,7 @@ const Img = styled("img")({
   maxHeight: "100%",
 });
 
-export default function BetCard() {
+export default function Card({ companyName, position, location }) {
   return (
     <Item style={{ marginTop: 18, backgroundColor: "RGB(250,246,250)" }}>
       <Grid container spacing={2}>
@@ -44,10 +44,10 @@ export default function BetCard() {
               }}
             >
               <Typography gutterBottom variant="subtitle1">
-                Standard license
+                {companyName} / {position}
               </Typography>
               <Typography variant="body2" gutterBottom>
-                Full resolution 1920x1080 • JPEG
+                {location}
               </Typography>
             </Grid>
           </Grid>
