@@ -3,6 +3,7 @@ const API_BASE_URL = "http://localhost:3001";
 
 class ApplicationService {
   postApp(newApp) {
+    console.log(newApp);
     return fetch(`${API_BASE_URL}/users/jobs`, {
       method: "POST",
       body: new URLSearchParams(newApp),

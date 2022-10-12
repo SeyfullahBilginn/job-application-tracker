@@ -14,7 +14,7 @@ export function useAuth() {
 // eslint-disable-next-line react/prop-types
 export function AuthProvider({ children }) {
   // const [currentUser, setCurrentUser] = useState();
-  // const navigate = useNavigate();
+  // const navigate = useNavigate(); 
   const [userCookie, setUserCookie, removeUserCookie] = useCookies(["user"]);
   const [signUpError, setSignUpError] = useState({
     code: "",
@@ -26,6 +26,7 @@ export function AuthProvider({ children }) {
     axios
       .post("http://localhost:3001/users", user)
       .then((res) => {
+        console.log(res);
         const { password, ...userData } = res.data;
         setUserCookie("user", userData);
         navigate("/home");
@@ -45,6 +46,7 @@ export function AuthProvider({ children }) {
     })
       .then((response) => {
         response.json().then((result) => {
+          console.log(result);
           setUserCookie("user", result);
           navigate("/home");
         });

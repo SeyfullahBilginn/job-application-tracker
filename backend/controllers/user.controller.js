@@ -17,6 +17,10 @@ exports.create = (req, res) => {
         email: req.body.email,
         password: req.body.password
     });
+<<<<<<< HEAD
+=======
+    // log
+>>>>>>> 2a8c6358e0b6cda4e6c773b905b4b38238d3a0fd
     // Save User in the database
     User.create(user, (err, data) => {
         console.log(data);
