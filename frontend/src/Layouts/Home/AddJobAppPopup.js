@@ -15,7 +15,6 @@ export default function AddJobAppPopup({ text, closePopup }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(userCookie.user);
     ApplicationService.postApp({
       user_id: userCookie.user.id,
       date: "temp",

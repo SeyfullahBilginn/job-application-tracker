@@ -17,16 +17,6 @@ User.create = (newUser, result) => {
             result(err, null);
             return;
         }
-        console.log(res);
-        console.log("----");
-        console.log(res.insertId);
-        console.log("2222");
-        console.log(res.id);
-        console.log(res[0]);
-        console.log(newUser);
-        newUser.id = res.insertId
-        console.log("created user: ", newUser);
-        console.log("created user: ", { id: res.insertId, ...newUser });
         console.log("created user: ", { ...newUser, id: res.insertId });
         result(null, { ...newUser, id: res.insertId });
     });

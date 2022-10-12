@@ -26,15 +26,11 @@ export function AuthProvider({ children }) {
     axios
       .post("http://localhost:3001/users", user)
       .then((res) => {
-        console.log(res);
         const { password, ...userData } = res.data;
         setUserCookie("user", userData);
         navigate("/home");
       })
       .catch((error) => {
-        console.log(error);
-        console.log(error.response);
-        console.log(error.message);
         setSignUpError({
           code: error.response.status,
           message: error.response.data.message,
@@ -43,14 +39,12 @@ export function AuthProvider({ children }) {
   }
 
   function logIn(user) {
-    console.log(user);
     fetch("http://localhost:3001/users/login", {
       body: new URLSearchParams(user),
       method: "POST",
     })
       .then((response) => {
         response.json().then((result) => {
-          console.log(result);
           setUserCookie("user", result);
           navigate("/home");
         });
