@@ -3,7 +3,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Button } from "@mui/material";
 import { useAuth } from "Contexts/AuthContext";
-import Drawer from "Drawer/Drawer";
 import React, { useState } from "react";
 
 function Login() {
