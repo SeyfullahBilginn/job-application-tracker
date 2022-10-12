@@ -40,6 +40,7 @@ export default function Home() {
   useEffect(async () => {
     await getJobApps();
   }, [deletePopup.isOpen]);
+  console.log(jobApps);
 
   return (
     <div>
@@ -72,24 +73,25 @@ export default function Home() {
               </tr>
             </thead>
             <tbody>
-              {jobApps.map((app, index) => (
-                <tr key={index}>
-                  <td>{index}</td>
-                  <td>{app.company_name}</td>
-                  <td>{app.position}</td>
-                  <td>{app.location}</td>
-                  <td>{app.expected_salary}</td>
-                  <td id="actions">
-                    <div
-                      type="button"
-                      onClick={() => setDeletePopup({ isOpen: true, deletedId: app.id })}
-                    >
-                      <HighlightOffIcon id="deleteIcon" />
-                    </div>
-                    <EditIcon id="editIcon" />
-                  </td>
-                </tr>
-              ))}
+              {jobApps.length &&
+                jobApps.map((app, index) => (
+                  <tr key={index}>
+                    <td>{index}</td>
+                    <td>{app.company_name}</td>
+                    <td>{app.position}</td>
+                    <td>{app.location}</td>
+                    <td>{app.expected_salary}</td>
+                    <td id="actions">
+                      <div
+                        type="button"
+                        onClick={() => setDeletePopup({ isOpen: true, deletedId: app.id })}
+                      >
+                        <HighlightOffIcon id="deleteIcon" />
+                      </div>
+                      <EditIcon id="editIcon" />
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
