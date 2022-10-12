@@ -14,7 +14,6 @@ export function useAuth() {
 // eslint-disable-next-line react/prop-types
 export function AuthProvider({ children }) {
   // const [currentUser, setCurrentUser] = useState();
-  // const navigate = useNavigate(); 
   const [userCookie, setUserCookie, removeUserCookie] = useCookies(["user"]);
   const [signUpError, setSignUpError] = useState({
     code: "",
