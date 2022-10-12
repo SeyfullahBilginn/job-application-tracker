@@ -11,6 +11,7 @@ export default function Profile() {
     <div>
       <div>PROFILE</div>
       <button onClick={() => logout()}>Logout</button>
+      <button onClick={() => console.log(userCookie.user)}>show cookie</button>
     </div>
   );
 }

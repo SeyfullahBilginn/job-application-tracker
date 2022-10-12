@@ -18,9 +18,10 @@ exports.create = (req, res) => {
         email: req.body.email,
         password: req.body.password
     });
-
+    // log
     // Save User in the database
     User.create(user, (err, data) => {
+        console.log(data);
         if (err) {
             res.status(500).json({
                 message:

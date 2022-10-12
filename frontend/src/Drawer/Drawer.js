@@ -154,11 +154,6 @@ export default function Drawer({ children }) {
                 <ListItem
                   // eslint-disable-next-line react/no-array-index-key
                   key={index}
-                  sx={{
-                    display: "block",
-                    padding: 0,
-                    backgroundColor: item.key === activeIndex ? "#7A86B6" : "#A8A4CE",
-                  }}
                 >
                   <NavLink
                     // disablePadding
@@ -172,11 +167,6 @@ export default function Drawer({ children }) {
                   >
                     <div
                       className="link-text"
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
                       style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
                     >
                       <ListItemIcon

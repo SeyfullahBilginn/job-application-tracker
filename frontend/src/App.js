@@ -1,7 +1,7 @@
 import { useAuth } from "Contexts/AuthContext";
 import Drawer from "Drawer/Drawer";
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import routes from "routes";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "Header/Header";
@@ -10,7 +10,7 @@ export default function App() {
   const { userCookie } = useAuth();
   const [allRoutes, setAllRoutes] = useState([]);
 
-  useEffect(() => {}, [userCookie.user]);
+  // useEffect(() => {}, [userCookie.user]);
   const getRoutes = () =>
     routes.map((route) => {
       if (route.route) {
@@ -24,7 +24,9 @@ export default function App() {
             />
           );
         }
+        // console.log(userCookie.user && );
         if (!userCookie.user && !route.isLoggedIn) {
+          console.log(route.route);
           return (
             <Route
               exact={route.exactF}
@@ -45,7 +47,10 @@ export default function App() {
   return (
     <>
       <Header />
-      <Routes>{getRoutes()}</Routes>
+      <Routes>
+        {getRoutes()}
+        <Route path="*" element={<Navigate to="/sign-up" />} />
+      </Routes>
     </>
   );
 }

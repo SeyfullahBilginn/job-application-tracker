@@ -26,6 +26,7 @@ export function AuthProvider({ children }) {
     axios
       .post("http://localhost:3001/users", user)
       .then((res) => {
+        console.log(res);
         const { password, ...userData } = res.data;
         setUserCookie("user", userData);
         navigate("/home");
@@ -49,6 +50,7 @@ export function AuthProvider({ children }) {
     })
       .then((response) => {
         response.json().then((result) => {
+          console.log(result);
           setUserCookie("user", result);
           navigate("/home");
         });
