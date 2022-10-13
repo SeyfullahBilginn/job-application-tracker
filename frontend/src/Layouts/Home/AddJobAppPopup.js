@@ -25,7 +25,7 @@ export default function AddJobAppPopup({ text, closePopup }) {
       expected_salary: Number(expectedSalary),
       applied_cv: "temp",
     })
-      .then((res) => console.log("successfully added application"))
+      .then((res) => closePopup())
       .catch((error) => console.log(error));
   }
 
