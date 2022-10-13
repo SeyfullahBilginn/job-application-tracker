@@ -1,17 +1,15 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/no-array-index-key */
-import Drawer from "Drawer/Drawer";
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import { Button, Container } from "@mui/material";
-import Header from "Header/Header";
+import { Button } from "@mui/material";
 import ApplicationService from "Services/ApplicationService";
 import EditIcon from "@mui/icons-material/Edit";
 import { useAuth } from "Contexts/AuthContext";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import Card from "./Card";
+import { useDispatch, useSelector } from "react-redux";
+import { getApplications } from "features/applicationsSlice";
 import AddJobAppPopup from "./AddJobAppPopup";
 import "./Home.css";
 import GeneralPopup from "../Popups/GeneralPopup";
@@ -22,26 +20,37 @@ export default function Home() {
     isOopen: false,
     deletedId: null,
   });
-  const [jobApps, setJobApps] = useState([]);
   const { userCookie } = useAuth();
 
+  const { applications, error, isLoading } = useSelector((store) => store.applications);
+  const dispatch = useDispatch();
+
   function getJobApps() {
-    ApplicationService.getApps(userCookie.user.id)
-      .then((res) => res.json().then((result) => setJobApps(result)))
-      .catch((error) => console.log(error));
+    dispatch(getApplications(userCookie.user.id));
   }
 
   function deleteApp() {
     ApplicationService.deleteApp(deletePopup.deletedId)
       .then((res) => setDeletePopup({ ...deletePopup, isOpen: false }))
-      .catch((error) => console.log(error));
+      .catch((err) => {});
   }
 
   useEffect(async () => {
     await getJobApps();
   }, [deletePopup.isOpen]);
-  console.log(jobApps);
 
+  if (isLoading) {
+    return <div>Loading</div>;
+  }
+
+  if (error.isError) {
+    return (
+      <div>
+        Error occured
+        {error.message}
+      </div>
+    );
+  }
   return (
     <div>
       {isAddJobPopupOpen && (
@@ -73,8 +82,8 @@ export default function Home() {
               </tr>
             </thead>
             <tbody>
-              {jobApps.length &&
-                jobApps.map((app, index) => (
+              {applications &&
+                applications.map((app, index) => (
                   <tr key={index}>
                     <td>{index}</td>
                     <td>{app.company_name}</td>

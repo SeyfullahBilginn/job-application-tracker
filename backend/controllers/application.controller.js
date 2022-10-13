@@ -44,7 +44,6 @@ exports.findAll = (req, res) => {
 
 // Delete a job application with the specified jobId in the request
 exports.delete = (req, res) => {
-    console.log(req.params);
     Application.remove(req.params.jobId, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
