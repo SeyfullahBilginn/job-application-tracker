@@ -8,7 +8,6 @@ exports.create = (req, res) => {
             message: "Content can not be empty!"
         });
     }
-    console.log(req.body)
     // Create a User
     const user = new User({
         firstName: req.body.firstName,
@@ -17,10 +16,6 @@ exports.create = (req, res) => {
         email: req.body.email,
         password: req.body.password
     });
-<<<<<<< HEAD
-=======
-    // log
->>>>>>> 2a8c6358e0b6cda4e6c773b905b4b38238d3a0fd
     // Save User in the database
     User.create(user, (err, data) => {
         console.log(data);
@@ -36,7 +31,6 @@ exports.create = (req, res) => {
 
 // Find a single user with a userId
 exports.findOne = (req, res) => {
-    console.log(req.body)
     User.findById(req.body, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
